@@ -1,10 +1,19 @@
 import Image from 'next/image'
+import 'dotenv/config'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  return (
+  const {data} = fetch('/api/auth/getSession').then(
+    res => res.json()
+  )
+  .then(data => {
+    if (data.status === 401 ) {
+      window.location.href = '/login'
+    }
+  })
+    return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
@@ -115,4 +124,12 @@ export default function Home() {
       </div>
     </main>
   )
-}
+    }
+
+
+  
+
+
+
+
+
