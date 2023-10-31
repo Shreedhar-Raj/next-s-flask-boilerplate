@@ -1,6 +1,28 @@
 import React from 'react';
 
 export default function Login() {
+  let [email, setEmail] = React.useState('');
+  let [password, setPassword] = React.useState('');
+  async function handleSubmit () {
+    await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email, password})
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+
+      if(data.success) {
+        window.location.href = "/"
+      }
+      else {
+        alert(data.message)
+      }
+
+    
+    })
+  }
   return (
     <section className="w-full h-screen bg-white">
       <div className="mx-auto max-w-7xl">
@@ -21,18 +43,18 @@ export default function Login() {
           <div className="w-full bg-white lg:w-6/12 xl:w-5/12">
             <div className="flex flex-col items-start justify-start w-full h-full p-10 lg:p-16 xl:p-24">
               <h4 className="w-full text-black text-3xl font-bold">Login</h4>
-              <h1 className="text-lg text-gray-500">Don't have an account? <a href="/signup" className="text-blue-600 underline" data-primary="blue-600">Sign Up</a></h1>
+              <h1 className="text-lg text-gray-500">or, if you don't have an account you can <a href="/signup" className="text-blue-600 underline" data-primary="blue-600">sign up</a></h1>
               <div className="relative w-full mt-10 space-y-8">
                 <div className="relative">
                   <label className="font-medium text-gray-900">Email</label>
-                  <input type="text" className="text-black block w-full px-4 py-4 mt-2 text-xl placeholder-gray-400 border border-1 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50" data-primary="blue-600" data-rounded="rounded-lg" placeholder="Enter Your Email Address" />
+                  <input type="text" onChange={(e)  => { setEmail(e.target.value) }} className="block w-full px-4 py-4 mt-2 text-xl placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50" data-primary="blue-600" data-rounded="rounded-lg" placeholder="Enter Your Email Address" />
                 </div>
                 <div className="relative">
                   <label className="font-medium text-gray-900">Password</label>
-                  <input type="password" className="text-black block w-full px-4 py-4 mt-2 text-xl placeholder-gray-400 border border-1 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50" data-primary="blue-600" data-rounded="rounded-lg" placeholder="Password" />
+                  <input type="password" onChange={(e)  => { setPassword(e.target.value) }} className="block w-full px-4 py-4 mt-2 text-xl placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50" data-primary="blue-600" data-rounded="rounded-lg" placeholder="Password" />
                 </div>
                 <div className="relative">
-                  <a href="#_" className="inline-block w-full px-5 py-4 text-lg font-medium text-center text-white transition duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 ease" data-primary="blue-600" data-rounded="rounded-lg">Log In</a>
+                  <button onClick={(e) => {handleSubmit()}} className="inline-block w-full px-5 py-4 text-lg font-medium text-center text-white transition duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 ease" data-primary="blue-600" data-rounded="rounded-lg">Log In</button>
                   <a href="#_" className="inline-block w-full px-5 py-4 mt-3 text-lg font-bold text-center text-gray-900 transition duration-200 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 ease" data-rounded="rounded-lg">Login with Google</a>
                 </div>
               </div>
