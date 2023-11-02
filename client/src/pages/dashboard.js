@@ -1,7 +1,10 @@
 import React from 'react'
+import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import { useState } from 'react';
 
-function Sidebar() {
-  const [open, setOpen] = useState(true);
+
+function Dashboard() {
+const [open, setOpen] = useState(true);
   const Menus = [
     { title: "Dashboard", src: "Chart_fill" },
     { title: "Notifications", src: "Chat" },
@@ -13,7 +16,6 @@ function Sidebar() {
     { title: "Setting", src: "Setting" },
   ];
   return (
-  
     <div className="flex">
       <div
         className={` ${
@@ -59,7 +61,8 @@ function Sidebar() {
         </ul>
       </div>
     </div>
+  
   )
 }
 
-export default Sidebar
+export default Dashboard
