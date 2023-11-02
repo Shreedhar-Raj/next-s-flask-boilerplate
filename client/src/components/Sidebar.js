@@ -1,4 +1,6 @@
+// Imports
 import React from 'react'
+import { useState } from 'react';
 
 function Sidebar() {
   const [open, setOpen] = useState(true);

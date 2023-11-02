@@ -1,8 +1,6 @@
 import Sidebar from '@/components/Sidebar';
 import React from 'react'
 
-import { useState } from 'react';
-
 
 function Dashboard() {
 const [open, setOpen] = useState(true);
