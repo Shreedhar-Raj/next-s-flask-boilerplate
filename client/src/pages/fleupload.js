@@ -4,12 +4,10 @@ import {supabase} from '@/utils/supabaseClient.mjs'
 import {v4 as uuidv4} from 'uuid'
 export default function fileUpload() {
  let [filename, setfilename] = React.useState('');
-  let [file, setfile] = React.useState([]);
+  let [file, setfile] = React.useState();
   
   let [filetype, setfiletype] = React.useState(".pdf");
-  async function submit() {
-    
-
+  async function submit(e) {
     let { data : {session} } = await supabase.auth.getSession()
     console.log(session.user.id)
     let myuuid = uuidv4();
