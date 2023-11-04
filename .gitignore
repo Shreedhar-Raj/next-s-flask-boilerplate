@@ -2,3 +2,5 @@
 
 /node_modules
 /client/src/utils/masterfulenv.js
+
+.env
