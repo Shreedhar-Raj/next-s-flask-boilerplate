@@ -1,8 +1,16 @@
+import Sidebar from '@/components/Sidebar'
 import React from 'react'
 
 function index() {
   return (
-    <div>index</div>
+    <div>
+      <div>
+        <Sidebar />
+      </div>
+      <div>
+        
+      </div>
+    </div>
   )
 }
 
