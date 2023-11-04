@@ -3,27 +3,7 @@ import React from 'react';
 import {supabase} from '@/utils/supabaseClient.mjs'
 
 export default function fileUpload() {
- let [filename, setfilename] = React.useState('');
-  let [file, setfile] = React.useState();
-  
-  let [filetype, setfiletype] = React.useState(".pdf");
-  async function submit(e) {
-    let { data : {session} } = await supabase.auth.getSession()
-    console.log(session.user.id)
-    let myuuid = uuidv4();
-    const file_name = session.user.id.concat('/').concat(filename).concat('.pdf')
-    const { data, error } = await supabase
-    .storage
-    .from('forumNotes')
-    .upload(file_name, file, {
-        cacheControl: '3600',
-        upsert: false
-    })
-
-    if (!error) {
-        window.location.href = "/"
-    }
-  }
+ 
   
   return(
     <div>

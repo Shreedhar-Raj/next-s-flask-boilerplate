@@ -6,6 +6,16 @@ import TopNavbar from '@/components/TopNav';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 function index() {
+  async function signout() {
+    await fetch('/api/auth/signout').then((res) => {
+      if (res.status === 200) {
+        window.location.href = "/"
+      }
+      else{
+        signout()
+      }
+    })
+  }
   return (
       <div className='flex'>
       <div>
@@ -15,7 +25,7 @@ function index() {
         <TopNavbar className='max-w-100' />
       <div className='flex justify-center h-full  w-full oveflow-hidden items-center'>
       <div className='items-center'>
-        <button className='bg-orange-300 items-center rounded-xl p-5 relative border border-2 border-orange-400'>Log Out  
+        <button onClick={(e)=>{signout()}} className='bg-orange-300 items-center rounded-xl p-5 relative border border-2 border-orange-400'>Log Out  
          <LogoutIcon className='pl-2' />
         </button>
       </div>
