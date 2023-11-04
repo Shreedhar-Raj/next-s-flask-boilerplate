@@ -1,7 +1,7 @@
 
 import React from 'react';
 import {supabase} from '@/utils/supabaseClient.mjs'
-import {v4 as uuidv4} from 'uuid'
+
 export default function fileUpload() {
  let [filename, setfilename] = React.useState('');
   let [file, setfile] = React.useState();
