@@ -1,4 +1,5 @@
 
+import {supabase} from '@/utils/supabaseClient.mjs'
 const {data} = fetch('/api/auth/getSession').then(
 res => res.json()
 )
@@ -6,6 +7,14 @@ res => res.json()
 if (data.status === 401 ) {
     window.location.href = '/login'
     
+}
+else {
+const {dta : {user}} = supabase.auth.getUser()
+const id = user.id
+let { dat: students, error } = supabase
+  .from('students')
+  .select('plan')
+  .eq('id', user.id)
 }
 })
 
