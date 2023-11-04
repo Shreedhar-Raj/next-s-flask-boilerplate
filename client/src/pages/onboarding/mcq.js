@@ -6,6 +6,7 @@ function mcq() {
     <div>
         <div className='flex items-center justify-center w-screen h-screen'>
             <div>
+                
             <h1 className='text-4xl pb-5'>where is da chaddha?</h1>
             <div className='flex pt-3 items-center'>
                 <button className='py-1 px-3 rounded-xl border border-orange-500 text-orange-400 hover:text-white hover:bg-orange-400'>A</button>
