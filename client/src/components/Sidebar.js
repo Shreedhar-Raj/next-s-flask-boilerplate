@@ -26,15 +26,15 @@ function Sidebar() {
     { title: "Notes ", href: "/notes", component: <DescriptionIcon className='text-orange-400' /> , gap: true },
     { title: "Settings", href: '/settings', component: <SettingsIcon className='text-orange-400' /> },
   ];
-  const data = supabase.from('students').select('username').eq('id', localStorage.getItem('session')).then((res) => {
-    if (res.error != null) {
-      console.log(res.error)
-    }
-    else{
-      return res.data[0]
-    }
-  })
-  console.log(data)
+  // const data = supabase.from('students').select('username').eq('id', ).then((res) => {
+  //   if (res.error != null) {
+  //     console.log(res.error)
+  //   }
+  //   else{
+  //     return res.data[0]
+  //   }
+  // })
+  // console.log(data)
   return (
   
     <div className="flex">
@@ -81,7 +81,7 @@ function Sidebar() {
             </a>
           ))}
         </ul>
-         <div className='bottom-0 m-12 p-5 w-5'>{localStorage.getItem('username')}</div>
+         {/* <div className='bottom-0 m-12 p-5 w-5'>{localStorage.getItem('username')}</div> */}
       </div>
      
     </div>

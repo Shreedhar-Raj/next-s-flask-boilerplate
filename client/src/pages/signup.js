@@ -20,7 +20,7 @@ export default function Signup() {
       }
       else {
         alert(data.message)
-        refreshPage();
+        window.location.href = "/signup"
       }
 
     
