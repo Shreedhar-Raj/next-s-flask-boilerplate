@@ -45,7 +45,7 @@ function Sidebar() {
       >
         <KeyboardBackspaceIcon
           src="./src/assets/control.png"
-          className={`absolute cursor-pointer -right-3 bg-white top-9 w-7 border-orange-300 text-orange-300
+          className={`absolute cursor-pointer -right-3 bg-white top-9 w-7 border-[#197878] text-[#197878]
            border-2 rounded-full  ${!open && "rotate-180"}`}
           onClick={() => setOpen(!open)}
         />
