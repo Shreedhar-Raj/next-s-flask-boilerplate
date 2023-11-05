@@ -3,6 +3,9 @@ import React from 'react';
 export default function Login() {
   let [email, setEmail] = React.useState('');
   let [password, setPassword] = React.useState('');
+  function redirectToDashboard() {
+    window.location.href = "/dashboard";
+  }
   async function handleSubmit () {
     await fetch('/api/auth/login', {
       method: 'POST',
@@ -14,9 +17,8 @@ export default function Login() {
       console.log(data);
 
       if(data.success) {
-        localStorage.setItem('session', data.id)
-
-        window.location.href = "/dashboard"
+        localStorage.setItem('session', data.id);
+        redirectToDashboard();
       }
       else {
         alert(data.message)
