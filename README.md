@@ -1,4 +1,8 @@
-# nextjs-flask-boilerplate
+# Tech Stack
+- NextJS version 13
+- TailwindCSS
+- Flask
+- Python
 
 # Running the Application
 
