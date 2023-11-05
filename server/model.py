@@ -3,7 +3,7 @@ import re
 import os
 from datetime import datetime, timedelta
 
-openai.api_key = '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'
+openai.api_key = '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'
 def fix_schedule(subjects, chapters, daily_availability, proficiency_scores, extracurriculars, upcoming_tests, learning_pace, daily_test_scores):
     subjects = "{subjects}"
     chapters = "{chapters}"
