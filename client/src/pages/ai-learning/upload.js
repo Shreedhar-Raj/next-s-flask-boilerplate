@@ -9,6 +9,9 @@ import { supabase } from '@/utils/supabaseClient.mjs';
 function Upload() {
   var alertFile = null
   const [fileNname, setFileName] = useState('Untitled')
+  const page = {
+    page: "AI Learning/Upload"
+  }
 
   return (
       <div className='flex'>
@@ -16,7 +19,7 @@ function Upload() {
         <Sidebar />
       </div>
       <div className='w-full h-screen'>
-        <TopNavbar className='max-w-100' />
+        <TopNavbar data={page} className='max-w-100' />
       <div className=' justify-center h-full  w-full oveflow-hidden items-center'>
       
       <div className='flex justify-center h-full  w-full oveflow-hidden items-center'>
