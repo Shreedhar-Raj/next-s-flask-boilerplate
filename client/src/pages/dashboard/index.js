@@ -3,7 +3,6 @@ import TopNavbar from '@/components/TopNav';
 import React from 'react'
 import { useState } from 'react';
 
-import {NewsApi} from 'newsapi'
 function Dashboard() {
   const page = {
     page: "Dashboard",
