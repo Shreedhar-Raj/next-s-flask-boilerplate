@@ -106,5 +106,3 @@ python3 -m pip install -r requirements.txt
 - **Tailwind CSS** 💻 - For frontend styling
 
 ---
-
-This addition provides a detailed overview of the features and the tech stack using emojis for each section, making the README more informative and visually appealing.
