@@ -13,7 +13,6 @@ function index() {
       </div>
       <div className=' w-full relative h-screen'>
         <TopNavbar data={page} />
-        
       </div>
     </div>
   )

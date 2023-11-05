@@ -2,7 +2,7 @@ import React from 'react';
 
 const PageCard = (props) => {
   return (
-    <div className="max-w-md w-fit rounded-xl border border-1 shadow-xl">
+    <div className="max-w-md w-fit rounded-xl border border-1 shadow-2xl">
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{props.data.title}</div>
         <p className="text-gray-700 w-parent text-base whitespace-normal">
