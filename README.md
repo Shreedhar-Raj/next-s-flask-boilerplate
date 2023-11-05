@@ -1,8 +1,8 @@
-Certainly! Here's an addition to your existing README file that provides more details about the features and the technology stack, incorporating emojis for a more engaging presentation:
+
 
 ---
 
-# nextjs-flask-boilerplate 🚀
+# StudySage 🚀
 
 ## Running the Application
 
@@ -106,5 +106,3 @@ python3 -m pip install -r requirements.txt
 - **Tailwind CSS** 💻 - For frontend styling
 
 ---
-
-This addition provides a detailed overview of the features and the tech stack using emojis for each section, making the README more informative and visually appealing.
