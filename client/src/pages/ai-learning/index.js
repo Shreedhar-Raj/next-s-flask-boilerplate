@@ -12,6 +12,7 @@ function index() {
   }
   const ainotes = {
     title: "AI Notes Generator",
+    link: "/ai-learning/upload",
     description: "Create interesting and useful notes with AI",
     component: <SmartToyIcon className='text-5xl text-[#197878]' />
   }
@@ -33,11 +34,14 @@ function index() {
       <div className='w-full relative h-screen'>
         <TopNavbar data={page} />
         <div className="flex justify-center w-full">
+
+
         <div className='gap-y-5'>
+ 
         <LongCard data={ainotes} />
-        <LongCard data={summary} />
-        <LongCard data={quiz} />
+
         </div>
+
         </div>
       </div>
     </div>

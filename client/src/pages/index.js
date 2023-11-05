@@ -9,17 +9,18 @@ import { useEffect, useState } from 'react'
 export default function Home() {
   const [session, setSession] = useState("")
 
-  // fetch('/api/auth/getSession') .then(res => 
+  const redirectToTime2 = () => {
+    window.location.href = "/onboarding/time2";
+  }
 
-//   // redirect(200, '/login')
-// )
-    let id;
+  function handleSubmitAcademics() {
+
+    redirectToTime2();
     useEffect(() => {
-        
-          id = localStorage.getItem('session')
-          setSession(id)
-      }, []);
-
+        if (typeof window !== 'undefined') {
+          redirectToTime2();
+        }
+      }, []);}
  return (
  <div className='text-black w-fit h-fit p-5'>{session}</div>
   )
