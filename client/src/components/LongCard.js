@@ -3,12 +3,14 @@ import AcUnitIcon from '@mui/icons-material/AcUnit';
 
 const LongCard = (props) => {
   return (
-    <div className='max-w-lg h-35 flex rounded-2xl border  p-5'>
-        
+    <div className='pt-3'>
+        <a className='max-w-lg h-35 flex rounded-2xl border border-[#cae6e6] cursor-pointer hover:bg-[#cae6e6]  p-5'>
+        {props.data.component}
         <div className='pl-5'>
             <div className="text-xl">{props.data.title}</div>
             <h1>{props.data.description}</h1>
         </div>
+    </a>
     </div>
   )
 }

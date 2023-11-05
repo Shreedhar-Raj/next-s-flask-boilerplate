@@ -1,12 +1,16 @@
+import LongCard from '@/components/LongCard'
 import NoImageCard from '@/components/NoImageCard'
 import Sidebar from '@/components/Sidebar'
 import TopNav from '@/components/TopNav'
 import React from 'react'
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+
 
 function index() {
   const notifications = {
-    title: "Welcome to Study App",
-    text: "nice"
+    title: "Welcome to Study Sage",
+    description: "Study sage is an app where you can enhance your learning experiance, check out our app!",
+    component: <NotificationsActiveIcon className='text-5xl text-[#197878]' />
   }
   const page  = {
     page: "Notifications",
@@ -18,7 +22,9 @@ function index() {
       </div>
       <div className='w-full relative h-screen'>
         <TopNav data={page} className="border-b max-w-100" />
-        <NoImageCard data={notifications} />
+        <div className="flex justify-center">
+        <LongCard data={notifications} className='' />
+        </div>
         
       </div>
     </div>
