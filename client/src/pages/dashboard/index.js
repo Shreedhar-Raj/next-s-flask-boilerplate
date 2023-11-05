@@ -1,9 +1,13 @@
 import Sidebar from '@/components/Sidebar';
+import TopNavbar from '@/components/TopNav';
 import React from 'react'
 import { useState } from 'react';
 
 
 function Dashboard() {
+  const page = {
+    page: "Dashboard",
+  }
 const [open, setOpen] = useState(true);
   const Menus = [
     { title: "Dashboard", src: "Chart_fill" },
@@ -19,7 +23,17 @@ const [open, setOpen] = useState(true);
   console.log(localStorage.getItem('session'))
   }
   return (
-    <Sidebar />
+    <div>
+      <div className='flex'>
+        <div >
+          <Sidebar />
+        </div>
+        <div className=' w-full relative h-screen'>
+        <TopNavbar data={page} />
+        
+      </div>
+      </div>
+    </div>
   
   )
 }

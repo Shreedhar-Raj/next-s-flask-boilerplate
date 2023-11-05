@@ -5,8 +5,11 @@ import React from 'react'
 
 function index() {
   const notifications = {
-    title: "nice",
+    title: "Welcome to Study App",
     text: "nice"
+  }
+  const page  = {
+    page: "Notifications",
   }
   return (
     <div className='flex'>
@@ -14,7 +17,7 @@ function index() {
         <Sidebar />
       </div>
       <div className=' w-full relative h-screen'>
-        <TopNav className="border-b max-w-100" />
+        <TopNav data={page} className="border-b max-w-100" />
         <NoImageCard data={notifications} />
         
       </div>

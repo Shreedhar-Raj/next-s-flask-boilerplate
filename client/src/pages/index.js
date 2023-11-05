@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-// import { localStorage } from '@/utils/localstorage.mjs'
+//import { localStorage } from '@/utils/localstorage.mjs'
 const inter = Inter({ subsets: ['latin'] })
 import {redirect} from 'next/dist/server/api-utils'
 import {supabase} from '@/utils/supabaseClient.mjs'
