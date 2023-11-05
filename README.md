@@ -2,7 +2,7 @@
 
 ---
 
-# nextjs-flask-boilerplate 🚀
+# StudySage 🚀
 
 ## Running the Application
 
