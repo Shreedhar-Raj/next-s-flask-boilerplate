@@ -7,10 +7,10 @@ import {supabase} from '@/utils/supabaseClient.mjs'
 
 export default function Home() {
 
-  fetch('/api/auth/getSession') .then(res => 
+  // fetch('/api/auth/getSession') .then(res => 
 
-  redirect(200, '/login')
-)
+//   // redirect(200, '/login')
+// )
  return (
  <div>hi</div>
   )

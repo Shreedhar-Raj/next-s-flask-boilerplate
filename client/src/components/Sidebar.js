@@ -12,6 +12,7 @@ import SmartToyIcon from '@mui/icons-material/SmartToy';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import MenuIcon from '@mui/icons-material/Menu';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import { supabase } from '@/utils/supabaseClient.mjs';
 
 function Sidebar() {
   const [open, setOpen] = useState(true);
@@ -25,13 +26,22 @@ function Sidebar() {
     { title: "Notes ", href: "/notes", component: <DescriptionIcon className='text-orange-400' /> , gap: true },
     { title: "Settings", href: '/settings', component: <SettingsIcon className='text-orange-400' /> },
   ];
+  // const data = supabase.from('students').select('username').eq('id', ).then((res) => {
+  //   if (res.error != null) {
+  //     console.log(res.error)
+  //   }
+  //   else{
+  //     return res.data[0]
+  //   }
+  // })
+  // console.log(data)
   return (
   
     <div className="flex">
       <div
         className={` ${
           open ? "w-72" : "w-20 "
-        } border-r h-screen p-5 bg pt-8 relative duration-300`}
+        } border-r h-screen h-full p-5 bg pt-8 relative duration-300`}
       >
         <KeyboardBackspaceIcon
           src="./src/assets/control.png"
@@ -71,8 +81,9 @@ function Sidebar() {
             </a>
           ))}
         </ul>
-    
+         {/* <div className='bottom-0 m-12 p-5 w-5'>{localStorage.getItem('username')}</div> */}
       </div>
+     
     </div>
   )
 }

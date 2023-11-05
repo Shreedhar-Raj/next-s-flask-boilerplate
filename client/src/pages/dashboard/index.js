@@ -3,7 +3,7 @@ import TopNavbar from '@/components/TopNav';
 import React from 'react'
 import { useState } from 'react';
 
-
+import {NewsApi} from 'newsapi'
 function Dashboard() {
   const page = {
     page: "Dashboard",
@@ -19,9 +19,7 @@ const [open, setOpen] = useState(true);
     { title: "Notes ", src: "Folder", gap: true },
     { title: "Setting", src: "Setting" },
   ];
-  if (typeof window !== 'undefined') {
-  console.log(localStorage.getItem('session'))
-  }
+
   return (
     <div>
       <div className='flex'>
