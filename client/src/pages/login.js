@@ -14,7 +14,7 @@ export default function Login() {
     })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
 
       if(data.success) {
         localStorage.setItem('session', data.id);
