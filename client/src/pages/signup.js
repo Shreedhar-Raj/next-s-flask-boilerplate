@@ -3,6 +3,7 @@ import React from 'react';
 export default function Signup() {
   let [email, setEmail] = React.useState('');
   let [password, setPassword] = React.useState('');
+  let [name, setName] = React.useState('');
   async function handleSubmit () {
     await fetch('/api/auth/signup', {
       method: 'POST',
@@ -14,6 +15,7 @@ export default function Signup() {
       console.log(data);
 
       if(data.success) {
+        localStorage.setItem('username', name)
         window.location.href = "/login"
       }
       else {
@@ -48,7 +50,7 @@ export default function Signup() {
                 <div className="relative w-full mt-10 space-y-8">
                   <div className="relative">
                     <label className="font-medium text-gray-900">Name</label>
-                    <input type="text" className="text-black block w-full px-4 py-4 mt-2 text-xl placeholder-gray-400 border border-1 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50" data-primary="blue-600" data-rounded="rounded-lg" placeholder="Enter Your Name" />
+                    <input type="text" onChange={(e) => {setName(e.target.value)}}className="text-black block w-full px-4 py-4 mt-2 text-xl placeholder-gray-400 border border-1 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50" data-primary="blue-600" data-rounded="rounded-lg" placeholder="Enter Your Name" />
                   </div>
                   <div className="relative">
                     <label className="font-medium text-gray-900">Email</label>
