@@ -18,7 +18,6 @@ export default function Signup() {
       }
       else {
         alert(data.message)
-
       }
 
     
