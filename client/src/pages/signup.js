@@ -3,6 +3,12 @@ import React from 'react';
 export default function Signup() {
   let [email, setEmail] = React.useState('');
   let [password, setPassword] = React.useState('');
+  function redirectToLogin() {
+    window.location.href = "/login";
+  }
+  function refreshPage() {
+    window.location.reload();
+  }
   async function handleSubmit () {
     await fetch('/api/auth/signup', {
       method: 'POST',
@@ -14,11 +20,11 @@ export default function Signup() {
       console.log(data);
 
       if(data.success) {
-        window.location.href = "/login"
+        redirectToLogin();
       }
       else {
         alert(data.message)
-        window.location.href = "/signup"
+        refreshPage();
       }
 
     
