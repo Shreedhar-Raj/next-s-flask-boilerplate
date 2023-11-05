@@ -19,7 +19,6 @@ function Sidebar() {
   const Menus = [
     { title: "Dashboard", href: "/dashboard", component: <WindowIcon className='text-orange-400' /> },
     { title: "Notifications", href: "/notifications", component: <NotificationsActiveIcon className='text-orange-400' /> },
-    { title: "Learning Paths", href: "/learning-paths", component:<SchoolIcon className='text-orange-400' /> , gap: true },
     { title: "Schedule ", href: "/schedule", component: <AccessTimeFilledIcon className='text-orange-400' /> }, 
     { title: "AI Learning",href: "/ai-learning", component: <SmartToyIcon className='text-orange-400' /> },
     { title: "Analytics", href: "/analytics", component: <TimelineIcon className='text-orange-400' /> },

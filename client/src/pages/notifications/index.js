@@ -16,7 +16,7 @@ function index() {
       <div>
         <Sidebar />
       </div>
-      <div className=' w-full relative h-screen'>
+      <div className='w-full relative h-screen'>
         <TopNav data={page} className="border-b max-w-100" />
         <NoImageCard data={notifications} />
         
