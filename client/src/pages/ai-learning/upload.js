@@ -8,6 +8,7 @@ import { supabase } from '@/utils/supabaseClient.mjs';
 
 function Upload() {
   var alertFile = null
+  
   async function submit(file) {
     
   }
@@ -25,7 +26,7 @@ function Upload() {
         }}/>
         <button onClick={(e) => {
            let myuuid = uuidv4();
-    const file_name = "ff76c7be-3ace-41f6-aeda-a244faf9c113".concat('/').concat(myuuid)
+    const file_name = localStorage.getItem('session').concat('/').concat(myuuid)
     supabase
     .storage
     .from('forumNotes')

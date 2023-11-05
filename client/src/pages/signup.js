@@ -14,11 +14,11 @@ export default function Signup() {
       console.log(data);
 
       if(data.success) {
-        window.location.href = "/"
+        window.location.href = "/login"
       }
       else {
         alert(data.message)
-
+        window.location.href = "/signup"
       }
 
     

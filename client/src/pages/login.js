@@ -14,7 +14,9 @@ export default function Login() {
       console.log(data);
 
       if(data.success) {
-        window.location.href = "/"
+        localStorage.setItem('session', data.id)
+
+        window.location.href = "/dashboard"
       }
       else {
         alert(data.message)

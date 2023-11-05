@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation'
 
 export default  async function signout(req, res) {
     let { data, error } = await supabase.auth.signOut()
-    // let { session, error1 } = await supabase.auth.getSession()
+
     if (error) {
 
         return res.status(401).json({ success: false, message: error.message })}

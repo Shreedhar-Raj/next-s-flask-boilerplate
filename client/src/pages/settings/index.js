@@ -7,8 +7,10 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 function index() {
   async function signout() {
+    localStorage.clear()
     await fetch('/api/auth/signout').then((res) => {
       if (res.status === 200) {
+        
         window.location.href = "/"
       }
       else{

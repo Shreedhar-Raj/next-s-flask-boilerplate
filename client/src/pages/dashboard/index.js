@@ -15,6 +15,9 @@ const [open, setOpen] = useState(true);
     { title: "Notes ", src: "Folder", gap: true },
     { title: "Setting", src: "Setting" },
   ];
+  if (typeof window !== 'undefined') {
+  console.log(localStorage.getItem('session'))
+  }
   return (
     <Sidebar />
   
