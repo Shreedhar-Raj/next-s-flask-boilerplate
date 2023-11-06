@@ -22,14 +22,16 @@ function Upload() {
       </div>
       <div className='w-full h-screen'>
         <TopNavbar data={page} className='max-w-100' />
-      <div className=' justify-center h-full  w-full oveflow-hidden items-center'>
+      <div className=' h-full  w-full oveflow-hidden items-center'>
       
       <div className='flex justify-center h-full  w-full oveflow-hidden items-center'>
-        <input type="text" id="myname" className='m-5 border border-black border-15 rounded-lg px-3 py-2 text-black bg-orange-300' name="filename" onChange={(e)=>  {setFileName(e.target.value)}} placeholder='Enter Subject and Topic Name'/>
+        <div>
+        <input type="text" id="myname" className='m-5 border border-[#197878] border-15 rounded-lg px-3 py-2 text-black' name="filename" onChange={(e)=>  {setFileName(e.target.value)}} placeholder='Enter Subject and Topic Name'/>
         <input type="file" id="myFile" name="filename" onChange={(e)=>  {
           alertFile = e.target.files[0]
         }}/>
-        <button onClick={(e) => {
+        </div>
+        <button className='border border-[#197878]' onClick={(e) => {
            let myuuid = uuidv4();
     const file_name = localStorage.getItem('session').concat('/').concat(myuuid)
     supabase
@@ -85,8 +87,8 @@ function Upload() {
         }})
     console.log("done")
     
-        }}className='bg-orange-300 items-center rounded-xl p-5 relative border border-2 border-orange-400'>Upload File  
-         <UploadFileIcon className='pl-1' />
+        }}>Upload File  
+         <UploadFileIcon className='' />
         </button>
       </div>
       </div>
@@ -96,4 +98,4 @@ function Upload() {
   )
 }
 
-export default Upload
+export default Upload 

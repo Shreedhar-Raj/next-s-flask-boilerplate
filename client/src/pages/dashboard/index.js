@@ -77,10 +77,14 @@ const [open, setOpen] = useState(true);
     { title: "Setting", src: "Setting" },
   ];
   return (
-    <div>
-      <div className='flex'>
-        <div >
-          <Sidebar />
+    <div className='flex'>
+      <div>
+        <Sidebar />
+      </div>
+      <div className='w-full relative h-screen'>
+        <TopNav data={page} className="border-b max-w-100" />
+        <div className="flex justify-center">
+        <LongCard data={notifications} className='' />
         </div>
         <div className=' w-full relative h-screen '>
         <TopNavbar data={page} />
