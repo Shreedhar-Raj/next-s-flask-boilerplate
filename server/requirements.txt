@@ -15,7 +15,7 @@ googleapis-common-protos
 gotrue
 h
 httpcore
-httplib
+
 httpx
 idna
 iniconfig
