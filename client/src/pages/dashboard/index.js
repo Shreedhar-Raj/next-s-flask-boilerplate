@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from '@/components/Sidebar';
 import TopNavbar from '@/components/TopNav';
+import LongCard from '@/components/LongCard';
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 const YourPage = () => {
   const [articles_, setArticles] = useState([]);
 
@@ -65,6 +67,11 @@ const YourPage = () => {
    const page = {
     page: "Dashboard",
   }
+  const notifications = {
+    title: "Not Enough Data",
+    description: "You must have a minimum presence of 14 days on our platoform before you can request for this data.",
+    component: <RemoveCircleIcon className='text-5xl text-[#197878]' />
+  }
 const [open, setOpen] = useState(true);
   const Menus = [
     { title: "Dashboard", src: "Chart_fill" },
@@ -82,10 +89,6 @@ const [open, setOpen] = useState(true);
         <Sidebar />
       </div>
       <div className='w-full relative h-screen'>
-        <TopNav data={page} className="border-b max-w-100" />
-        <div className="flex justify-center">
-        <LongCard data={notifications} className='' />
-        </div>
         <div className=' w-full relative h-screen '>
         <TopNavbar data={page} />
         <div className='p-7 m-7 border border-[#197878] w-fit pr-6 rounded-lg shadow-lg  '>

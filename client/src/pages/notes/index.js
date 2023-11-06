@@ -7,9 +7,9 @@ function index() {
   const page = {
     page: "Notes"
   }
-  const data = {
-    title: "English Literature.pdf",
-    description: "Notes on the Merchant of Venice",
+  const eco = {
+    title: "Living Standards.pdf",
+    description: "Notes on Living Standards",
     action: "Download"
   }
   return (
@@ -19,12 +19,9 @@ function index() {
       </div>
       <div className=' w-full relative h-screen'>
         <TopNavbar data={page} />
-        <div className='p-7 gap-x-7 grid-cols-3 grid-rows-3'>
-          <div>
-          <PageCard data={data} />
-          <PageCard data={data} />
-          <PageCard data={data} />
-          <PageCard data={data} />
+        <div className='p-7 gap-x-7 grid-cols-3'>
+          <div className='flex'>
+            <PageCard data={eco} />
           </div>
           <div>
           </div>

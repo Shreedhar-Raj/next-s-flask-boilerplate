@@ -13,17 +13,20 @@ function peerFinder() {
   }
   const ainotes = {
     title: "Harshiet Nanda",
-    description: "Loves politics",
+    board: "ICSE",
+    interests: "Tech, Sports, Business",
     component: <AccountCircleIcon className='text-5xl text-[#197878]' />
   }
   const summary = {
     title: "Shiv Chandra",
-    description: "Loves tech.",
+    board: "ICSE",
+    interests: "Tech, Sports, Fitness",
     component: <AccountCircleIcon className='text-5xl text-[#197878]' />
   }
   const quiz = {
     title: "Aaryan Chaddha",
-    description: "Loves AI",
+    board: "ICSE",
+    interests: "Karate, Tech, Fitness ",
     component: <AccountCircleIcon className='text-5xl text-[#197878]' />
   }
   return (
