@@ -19,18 +19,21 @@ function index() {
     component: <SmartToyIcon className='text-5xl text-[#197878]' />
   }
   const summary = {
-    title: "AI Note Summary Generatr",
+    title: "AI Note Summary Generator",
     description: "Create interesting and useful summaries with AI",
+    link: "/ai-learning/upload",
     component: <NoteAltIcon className='text-5xl text-[#197878]' />
   }
   const quiz = {
     title: "AI Note Question Generator",
     description: "Create interesting and useful questions with AI",
+    link: "/ai-learning/upload",
     component: <HelpCenterIcon className='text-5xl text-[#197878]' />
   }
   const peer = {
     title: "Find Peers!",
     description: "Find peers to study with!",
+    link: "/ai-learning/upload",
     component: <AccountCircleIcon className='text-5xl text-[#197878]' />
   }
   // Assuming this code is part of your React component or any JavaScript file in your Next.js application

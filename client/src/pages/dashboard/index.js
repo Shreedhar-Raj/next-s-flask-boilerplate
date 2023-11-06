@@ -1,38 +1,35 @@
-import Sidebar from '@/components/Sidebar';
-import TopNavbar from '@/components/TopNav';
+import LongCard from '@/components/LongCard'
+import NoImageCard from '@/components/NoImageCard'
+import Sidebar from '@/components/Sidebar'
+import TopNav from '@/components/TopNav'
 import React from 'react'
-import { useState } from 'react';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
-function Dashboard() {
-  const page = {
+
+function index() {
+  const notifications = {
+    title: "Not Enough Data",
+    description: "You must have a minimum presence of 14 days on our platoform before you can request for this data.",
+    component: <RemoveCircleIcon className='text-5xl text-[#197878]' />
+  }
+  const page  = {
     page: "Dashboard",
   }
-const [open, setOpen] = useState(true);
-  const Menus = [
-    { title: "Dashboard", src: "Chart_fill" },
-    { title: "Notifications", src: "Chat" },
-    { title: "Learning Paths", src: "User", gap: true },
-    { title: "Schedule ", src: "Calendar" },
-    { title: "AI Learning", src: "Search" },
-    { title: "Analytics", src: "Chart" },
-    { title: "Notes ", src: "Folder", gap: true },
-    { title: "Setting", src: "Setting" },
-  ];
-
   return (
-    <div>
-      <div className='flex'>
-        <div >
-          <Sidebar />
+    <div className='flex'>
+      <div>
+        <Sidebar />
+      </div>
+      <div className='w-full relative h-screen'>
+        <TopNav data={page} className="border-b max-w-100" />
+        <div className="flex justify-center">
+        <LongCard data={notifications} className='' />
         </div>
-        <div className=' w-full relative h-screen'>
-        <TopNavbar data={page} />
         
       </div>
-      </div>
     </div>
-  
   )
 }
 
-export default Dashboard
+export default index
