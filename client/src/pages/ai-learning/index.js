@@ -6,9 +6,9 @@ import SmartToyIcon from '@mui/icons-material/SmartToy';
 import NoteAltIcon from '@mui/icons-material/NoteAlt';
 import HelpCenterIcon from '@mui/icons-material/HelpCenter';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-
+import { useState } from 'react';
 function index() {
-  const [lesson, setLesson] = React.useState("hello brother");
+  const [lesson, setLesson] = useState("hello brother");
   const page  = {
     page: "AI Learning"
   }

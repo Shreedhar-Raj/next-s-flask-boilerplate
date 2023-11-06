@@ -1,8 +1,8 @@
 import React from 'react';
-
+import { useState } from 'react';
 export default function Login() {
-  let [email, setEmail] = React.useState('');
-  let [password, setPassword] = React.useState('');
+  let [email, setEmail] = useState('');
+  let [password, setPassword] = useState('');
   function redirectToDashboard() {
     window.location.href = "/dashboard";
   }

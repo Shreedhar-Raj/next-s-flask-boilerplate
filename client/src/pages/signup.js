@@ -1,9 +1,9 @@
 import React from 'react';
-
+import { useState } from 'react';
 export default function Signup() {
-  let [email, setEmail] = React.useState('');
-  let [password, setPassword] = React.useState('');
-  let [name, setName] = React.useState('');
+  let [email, setEmail] = useState('');
+  let [password, setPassword] = useState('');
+  let [name, setName] = useState('');
   async function handleSubmit () {
     await fetch('/api/auth/signup', {
       method: 'POST',
