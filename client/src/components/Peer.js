@@ -9,11 +9,11 @@ const Peer = (props) => {
         <div className='pl-5'>
             <div className="text-xl">{props.data.title}</div>
             <div className='flex'>
-                <h1>BOARD: </h1>
+                <h1 className="font-bold">BOARD: </h1>
                 <span>{props.data.board}</span>
             </div>
             <div className='flex'>
-                <h1>INTERESTS: </h1>
+                <h1 className='font-bold'>INTERESTS: </h1>
                 <span>{props.data.interests}</span>
             </div>
         </div>
