@@ -6,14 +6,12 @@ const inter = Inter({ subsets: ['latin'] })
 import {redirect} from 'next/dist/server/api-utils'
 import {supabase} from '@/utils/supabaseClient.mjs'
 import { useEffect, useState } from 'react'
+import { Link } from 'next/link'
 export default function Home() {
   const [session, setSession] = useState("")
 
   return (
  <div className='text-black w-fit h-fit p-5'>
-  <a href='/signup' className="bg-[#197878] border border-[#197878] hover:text-[#197878] hover:bg-white text-white font-bold py-2 px-4 rounded">
-          Sign Up
-        </a>
  </div>
   )
     }
