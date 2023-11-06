@@ -1,10 +1,68 @@
+import React, { useEffect, useState } from 'react';
 import Sidebar from '@/components/Sidebar';
 import TopNavbar from '@/components/TopNav';
-import React from 'react'
-import { useState } from 'react';
+const YourPage = () => {
+  const [articles_, setArticles] = useState([]);
 
-function Dashboard() {
-  const page = {
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const userInterests = 'https://feeds.feedburner.com/gadgets360-latest'; 
+        const response = await fetch(`/api/getNews?userInterests=${userInterests}`);
+        const data = await response.json();
+        setArticles(data.articles);
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+      }
+    };
+
+
+  }, []);
+
+    const articles =[
+  {
+    link: 'https://www.techtarget.com/searchcio/definition/blockchain',
+    title: 'TechTarget - What is blockchain?'
+  },
+  {
+    link: 'https://www.mckinsey.com/featured-insights/mckinsey-explainers/what-is-blockchain',
+    title: 'McKinsey - What is blockchain?'
+  },
+  {
+    link: 'https://builtin.com/blockchain',
+    title: 'Built In - Blockchain'
+  },
+  {
+    link: 'https://www.synopsys.com/glossary/what-is-blockchain.html',
+    title: 'Synopsys - What is blockchain?'
+  },
+  {
+    link: 'https://www.simplilearn.com/tutorials/blockchain-tutorial/blockchain-technology',
+    title: 'Simplilearn - Blockchain Technology Tutorial'
+  },
+  {
+    link: 'https://aws.amazon.com/what-is/blockchain/?aws-products-all.sort-by=item.additionalFields.productNameLowercase&aws-products-all.sort-order=asc',
+    title: 'AWS - What is blockchain?'
+  },
+  {
+    link: 'https://www.ibm.com/topics/blockchain',
+    title: 'IBM - Blockchain'
+  },
+  {
+    link: 'https://www.blockchain.com/',
+    title: 'Blockchain.com'
+  },
+  {
+    link: 'https://www.investopedia.com/terms/b/blockchain.asp',
+    title: 'Investopedia - Blockchain'
+  },
+  {
+    link: 'https://www.coinbase.com/learn/crypto-basics/what-is-a-blockchain',
+    title: 'Coinbase - What is a blockchain?'
+  }
+];
+
+   const page = {
     page: "Dashboard",
   }
 const [open, setOpen] = useState(true);
@@ -18,21 +76,31 @@ const [open, setOpen] = useState(true);
     { title: "Notes ", src: "Folder", gap: true },
     { title: "Setting", src: "Setting" },
   ];
-
   return (
     <div>
       <div className='flex'>
         <div >
           <Sidebar />
         </div>
-        <div className=' w-full relative h-screen'>
+        <div className=' w-full relative h-screen '>
         <TopNavbar data={page} />
-        
-      </div>
-      </div>
-    </div>
-  
-  )
-}
+        <div className='p-7 m-7 border border-[#197878] w-fit pr-6 rounded-lg shadow-lg  '>
+      <h1 className='text-xl font-bold mb-7 '>Top {articles.length} News Articles from Times Now</h1>
+      <ul className='ml-5'>
+        {articles.map((article, index) => (
+          <li key={index}>
+            <a href={article.link} className='text-[#197878] underline'>{index+1}.   {article.title}</a>
+          </li>
+        ))}
+      </ul>
 
-export default Dashboard
+    </div>
+      </div>
+      </div>
+    
+    
+    </div>
+  );
+};
+
+export default YourPage;

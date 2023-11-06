@@ -49,8 +49,7 @@ function index() {
         <div className='gap-y-5 text-black' >
  
         <LongCard data={ainotes} />
-        <LongCard data={summary} />
-        <LongCard data={quiz} />
+
 
         {/* {text} */}
         </div>

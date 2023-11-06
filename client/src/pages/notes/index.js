@@ -2,7 +2,7 @@ import PageCard from '@/components/PageCard'
 import Sidebar from '@/components/Sidebar'
 import TopNavbar from '@/components/TopNav'
 import React from 'react'
-
+import { supabase } from '@/utils/supabaseClient.mjs';
 function index() {
   const page = {
     page: "Notes"

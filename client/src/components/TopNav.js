@@ -12,7 +12,7 @@ const TopNavbar = (props) => {
               <AccountCircleIcon />
             </li>
             <li>
-              <a href="#" className=" hover:underline">Random User</a>
+              <a href="#" className=" hover:underline"></a>
             </li>
           </ul>
         </div>
