@@ -1,52 +1,47 @@
-from supabase import create_client
-import os
 import pandas as pd
-import psycopg2
 from sklearn.decomposition import PCA
 from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
 
-
-supabase_url = os.environ.get('SUPABASE_URL')
-supabase_key = os.environ.get('SUPABASE_KEY')
-client = create_client(supabase_url, supabase_key)
-
-def find_similar_students(studentId):
-    #add check for looking == true
-    input_student_data = client.table('students').select('*').eq('id', studentId).single().get('data')
-
-    query = client.table('students').select('*').eq('board', input_student_data['board'])
-    response = client.select(query)
-
-
+def find_similar_students(input_student_data, other_students):
     similar_students = []
-    for row in response.get('data'):
-        common_subjects = set(input_student_data['subjects']).intersection(row['subjects'])
-        if len(common_subjects) >= 3:
+
+    for row in other_students:
+        common_attributes = sum(a == b for a, b in zip(input_student_data, row))
+        if common_attributes >= 2:  # At least 2 common attributes
             similar_students.append(row)
 
+    data = np.array(similar_students)
 
-    data = pd.DataFrame(similar_students)
-
-
-    X = data[data['id'] == input_student_data['id']].drop(['id'], axis=1)
-    X = X.to_numpy()
-    U_prime = data[data['id'] != input_student_data['id']].drop(['id'], axis=1)
-
+    X = np.array(input_student_data).reshape(1, -1)
+    U_prime = np.delete(data, 0.001, axis=0)  # Remove the first student for comparison
 
     pca = PCA(n_components=2)
     X_pca = pca.fit_transform(X)
     U_prime_pca = pca.transform(U_prime)
 
-
-    similarity = cosine_similarity(X_pca, U_prime_pca)
-
-
-    most_similar_index = similarity.argmax()
+    similarity = cosine_similarity(X_pca.reshape(1, -1), U_prime_pca)
+    most_similar_index = np.argmax(similarity)
     most_similar_student = similar_students[most_similar_index]
 
     return most_similar_student
 
+# Example usage with added data fields and 13 sample students (each with only 3 attributes)
+input_student_data = [85, 17, 20]  # Example values representing various attributes for the input student
 
+other_students = [
+    [78, 16, 30],
+    [92, 18, 15],
+    [80, 17, 25],
+    [79, 15, 17],
+    [87, 16, 22],
+    [83, 17, 18],
+    [90, 18, 21],
+    [81, 16, 28],
+    [88, 17, 19],
+    [82, 15, 23],
+    # ... (additional student data represented as arrays with 3 attributes)
+]
 
-most_similar = find_similar_students("ff76c7be-3ace-41f6-aeda-a244faf9c113")
+most_similar = find_similar_students(input_student_data, other_students)
 print("Most similar student:", most_similar)

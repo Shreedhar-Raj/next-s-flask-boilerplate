@@ -64,7 +64,7 @@ function Sidebar() {
             Study Sage
           </h1>
         </div>
-        <ul className="pt-6 pl-7">
+        <ul className="pt-6">
           {Menus.map((Menu, index) => (
             <a
               key={index}
