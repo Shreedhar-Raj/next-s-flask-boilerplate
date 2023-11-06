@@ -9,20 +9,12 @@ import { useEffect, useState } from 'react'
 export default function Home() {
   const [session, setSession] = useState("")
 
-  const redirectToTime2 = () => {
-    window.location.href = "/onboarding/time2";
-  }
-
-  function handleSubmitAcademics() {
-
-    redirectToTime2();
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-          redirectToTime2();
-        }
-      }, []);}
- return (
- <div className='text-black w-fit h-fit p-5'>{session}</div>
+  return (
+ <div className='text-black w-fit h-fit p-5'>
+  <a href='/signup' className="bg-[#197878] border border-[#197878] hover:text-[#197878] hover:bg-white text-white font-bold py-2 px-4 rounded">
+          Sign Up
+        </a>
+ </div>
   )
     }
 
