@@ -3,8 +3,8 @@ import re
 import os
 from datetime import datetime, timedelta
 
-openai.api_key = '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'
-def fix_schedule(subjects, chapters, daily_availability, proficiency_scores, extracurriculars, upcoming_tests, learning_pace, daily_test_scores):
+openai.api_key = "YOUR_API_KEY"
+def gen_schedule(subjects, chapters, daily_availability, proficiency_scores, extracurriculars, upcoming_tests, learning_pace, daily_test_scores):
     subjects = "{subjects}"
     chapters = "{chapters}"
     daily_availability = "{daily_availability}" #day, times available, times busy, next day
@@ -19,13 +19,18 @@ def fix_schedule(subjects, chapters, daily_availability, proficiency_scores, ext
         day, *events = day_schedule
         day_num = int(re.search(r'\d+', day).group())
         parsed_events = []
+        compromises = ""
         session_counter = 1
         for event in events:
+            if event.startswith('COMPROMISES:'):
+                compromises = event[len('COMPROMISES: '):]
+                continue
+            
             event_type, details = event.split(': ', 1)
             time_match = re.search(r'(\d+:\d+) - (\d+:\d+)', details)
             if time_match is None:
                 print(f"Error: no time match found in '{details}'")
-                continue  # Skip this event
+                continue  
             
             start_time_str, end_time_str = time_match.groups()
             subject_or_activity = details.split(', ')[-1] if ',' in details else ''
@@ -39,7 +44,7 @@ def fix_schedule(subjects, chapters, daily_availability, proficiency_scores, ext
             parsed_events.append(parsed_event)
             session_counter += 1
 
-        return {"day": day_num, "sessions": parsed_events}
+        return {"day": day_num, "sessions": parsed_events, "compromises": compromises}
 
 
     prompt = f"""
@@ -84,18 +89,23 @@ def fix_schedule(subjects, chapters, daily_availability, proficiency_scores, ext
 
 
     generated_schedule = response['choices'][0]['text'].strip().split('\n\n')
-    parsed_output = {}
-    for day_schedule in generated_schedule:
-        day_schedule_lines = day_schedule.strip().split('\n')
-        parsed_day_schedule = parse_schedule(day_schedule_lines)
-        parsed_output.update(parsed_day_schedule)
-
-
-
-    parsed_output = []
+    # print(generated_schedule)
+    parsed_output = [] 
     for day_schedule in generated_schedule:
         day_schedule_lines = day_schedule.strip().split('\n')
         parsed_day_schedule = parse_schedule(day_schedule_lines)
         parsed_output.append(parsed_day_schedule)
         
     return parsed_output
+
+
+subjects = "Math, Science, History"
+chapters = "Algebra, Biology, World War II"
+daily_availability = "Monday, 8:00 AM - 5:00 PM, 5:30 PM - 9:00 PM, Tuesday"
+proficiency_scores = "Math: 80, Science: 75, History: 60"
+extracurriculars = "Soccer: Monday 4:00 PM - 6:00 PM, Flexibility: 2"
+upcoming_tests = "Science: Unit Test, History: Midterm"
+learning_pace = "Math: 1, Science: 2, History: 3"
+daily_test_scores = "Math: 85, Science: 78, History: 63"
+
+print(gen_schedule(subjects, chapters, daily_availability, proficiency_scores, extracurriculars, upcoming_tests, learning_pace, daily_test_scores))

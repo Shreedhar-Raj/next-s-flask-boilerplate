@@ -12,6 +12,8 @@ function Upload() {
   const page = {
     page: "AI Learning/Upload"
   }
+  
+    
 
   return (
       <div className='flex'>
@@ -23,7 +25,7 @@ function Upload() {
       <div className=' justify-center h-full  w-full oveflow-hidden items-center'>
       
       <div className='flex justify-center h-full  w-full oveflow-hidden items-center'>
-        <input type="text" id="myname" className='m-5 border border-black border-15 rounded-lg px-3 py-2 text-black bg-orange-300' name="filename" onChange={(e)=>  {setFileName(e.target.value)}} placeholder='File Name'/>
+        <input type="text" id="myname" className='m-5 border border-black border-15 rounded-lg px-3 py-2 text-black bg-orange-300' name="filename" onChange={(e)=>  {setFileName(e.target.value)}} placeholder='Enter Subject and Topic Name'/>
         <input type="file" id="myFile" name="filename" onChange={(e)=>  {
           alertFile = e.target.files[0]
         }}/>
@@ -57,9 +59,31 @@ function Upload() {
       }
       else{
         console.log("Note Created")
-        window.location.href = "/dashboard"
-      }
-    })
+        const fileUrl = "https://brrctpvbkaisfaohwokv.supabase.co/storage/v1/object/sign/forumNotes/fc825a68-1e45-4698-ac99-9d8445bc7d50/a7d6af2c-7455-4874-bcc4-e46069a3fd05?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmb3J1bU5vdGVzL2ZjODI1YTY4LTFlNDUtNDY5OC1hYzk5LTlkODQ0NWJjN2Q1MC9hN2Q2YWYyYy03NDU1LTQ4NzQtYmNjNC1lNDYwNjlhM2ZkMDUiLCJpYXQiOjE2OTkyMjUxMTMsImV4cCI6MTY5OTgyOTkxM30.fI18VnkwZEf3NrZ32SSB49eAoZBwUQwhUQolSBD7tcw&t=2023-11-05T22%3A58%3A33.163Z"
+
+    const interests = ["blockchain", "basketball"]
+    console.log(interests)
+    ; // Assuming interests is an array in the query parameters
+    const topic = fileNname;
+
+    const apiUrl = `http://127.0.0.1:5000/notes?file_url=${fileUrl}&interests=${interests}&topic=${topic}`;
+    console.log(apiUrl);
+    fetch(apiUrl, {
+  method: 'GET',
+
+})
+  .then(res => res.json()) // Parse the JSON here
+  .then(data => {
+    console.log(data);
+    console.log(data.data);
+    console.log("genius");
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
+        }})
+    console.log("done")
     
         }}className='bg-orange-300 items-center rounded-xl p-5 relative border border-2 border-orange-400'>Upload File  
          <UploadFileIcon className='pl-1' />

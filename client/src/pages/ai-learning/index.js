@@ -8,6 +8,7 @@ import HelpCenterIcon from '@mui/icons-material/HelpCenter';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 function index() {
+  const [lesson, setLesson] = React.useState("hello brother");
   const page  = {
     page: "AI Learning"
   }
@@ -32,6 +33,9 @@ function index() {
     description: "Find peers to study with!",
     component: <AccountCircleIcon className='text-5xl text-[#197878]' />
   }
+  // Assuming this code is part of your React component or any JavaScript file in your Next.js application
+
+  
   return (
     <div className='flex'>
       <div>
@@ -42,11 +46,13 @@ function index() {
         <div className="flex justify-center w-full">
 
 
-        <div className='gap-y-5'>
+        <div className='gap-y-5 text-black' >
  
         <LongCard data={ainotes} />
         <LongCard data={summary} />
         <LongCard data={quiz} />
+
+        {/* {text} */}
         </div>
 
         </div>

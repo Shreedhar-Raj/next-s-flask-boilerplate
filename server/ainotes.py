@@ -1,51 +1,54 @@
 import openai
-import PyMuPDF
+import fitz
 
-def extract_text_from_pdf(file_path):
-    pdf_document = PyMuPDF.open(file_path)
-    text = ""
-    for page_number in range(len(pdf_document)):
-        page = pdf_document.load_page(page_number)
-        text += page.get_text()
-    pdf_document.close()
-    return text
+import os
+import requests
+def gen_notes(file_url, interests, topic):
+    openai.api_key = "YOUR_API_KEY"
+    
+    url = file_url
 
-def generate_notes(pdf_text, interests):
-    prompt = f"""
-    Summarize the following text into notes with headings, subheadings, and notes for each subtopic. Also, generate one question for each topic.
+    
+    response = requests.get(url)
 
-    {pdf_text}
+    with open('document.pdf', 'wb') as f:
+        f.write(response.content)
 
-    Further Learning:
-    Suggest some fun topics to research based on the content.
+    def extract_text_from_pdf(file_path):
+        doc = fitz.open(file_path) 
+        for page in doc: 
+            text = page.get_text() 
 
-    Personalized Learning:
-    Provide a list of fun facts with short descriptions related to the following interests: {', '.join(interests)}.
 
-    Questions:
-    Generate 5-10 questions about the content.
-    """
+    def generate_notes(pdf_text, interests, topic):
+        prompt = f"""
+        teach me {topic} using {pdf_text} with the following interests: {interests} keep it extensive, detailed and use technical terms for a high school level student in order to teach them and make them capabale of teaching others ensure you are applyinc the concepts to my interests.
+        """
 
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {
-                "role": "system",
-                "content": "You are a AI notes generation student for a student focused ed-tech tool."
-            },
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ]
-    )
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are a AI notes generation student for a student focused ed-tech tool."
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ]
+        )
 
-    return response['choices'][0]['message']['content']
+        return response['choices'][0]['message']['content']
 
-interests = ['']
-pdf_file_path = 'document.pdf'
 
-pdf_text = extract_text_from_pdf(pdf_file_path)
+    pdf_file_path = '/Users/aarush/Documents/Coding/shriteq-hackathon/server/document.pdf'
 
-notes = generate_notes(pdf_text, interests)
-print(notes)
+    pdf_text = extract_text_from_pdf(pdf_file_path)
+
+    notes = generate_notes(pdf_text, interests, topic)
+
+
+    return notes
+    
+# print()
